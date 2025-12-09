@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔺 Polygon Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="main-header">
+        <h1>🔺 Polygon Explorer - Interactive Learning Tool</h1>
+        <p>Discover the fascinating world of polygons and their properties!</p>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h2>📚 Learning Modules</h2>
+            <nav>
+                <button class="nav-btn active" data-module="introduction">Introduction to Polygons</button>
+                <button class="nav-btn" data-module="explorer">Regular Polygons Explorer</button>
+                <button class="nav-btn" data-module="calculator">Polygon Properties Calculator</button>
+                <button class="nav-btn" data-module="quiz">Quiz & Activities</button>
+                <button class="nav-btn" data-module="art">Polygon Art Creator</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Module 1: Introduction to Polygons -->
+            <section id="introduction" class="module active">
+                <h2>📐 What is a Polygon?</h2>
+                
+                <div class="two-column">
+                    <div class="polygon-card">
+                        <h3>Definition</h3>
+                        <p>A polygon is a closed figure made up of straight line segments called sides. 
+                        Each side connects two vertices (corner points).</p>
+                        
+                        <h3>Key Characteristics:</h3>
+                        <ul>
+                            <li><strong>Closed shape:</strong> The sides form a complete loop</li>
+                            <li><strong>Straight sides:</strong> No curved lines</li>
+                            <li><strong>Vertices:</strong> Corner points where sides meet</li>
+                            <li><strong>Angles:</strong> Formed at each vertex</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="property-box">
+                        <h4>Types of Polygons by Sides:</h4>
+                        <ul>
+                            <li>3 sides: Triangle</li>
+                            <li>4 sides: Quadrilateral</li>
+                            <li>5 sides: Pentagon</li>
+                            <li>6 sides: Hexagon</li>
+                            <li>7 sides: Heptagon</li>
+                            <li>8 sides: Octagon</li>
+                            <li>9 sides: Nonagon</li>
+                            <li>10 sides: Decagon</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>🎯 Interactive Demo</h3>
+                <div class="controls">
+                    <label for="intro-sides">Choose number of sides: <span id="intro-sides-value">6</span></label>
+                    <input type="range" id="intro-sides" min="3" max="12" value="6" class="slider">
+                </div>
+
+                <div class="two-column">
+                    <div class="canvas-container">
+                        <canvas id="intro-canvas" width="400" height="400"></canvas>
+                    </div>
+                    
+                    <div class="property-box" id="intro-properties">
+                        <h4>Properties of this 6-sided polygon:</h4>
+                        <p><strong>Number of vertices:</strong> <span class="prop-vertices">6</span></p>
+                        <p><strong>Number of sides:</strong> <span class="prop-sides">6</span></p>
+                        <p><strong>Sum of interior angles:</strong> <span class="prop-sum-angles">720</span>°</p>
+                        <p><strong>Each interior angle:</strong> <span class="prop-interior-angle">120.0</span>°</p>
+                        <p><strong>Each exterior angle:</strong> <span class="prop-exterior-angle">60.0</span>°</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Module 2: Regular Polygons Explorer -->
+            <section id="explorer" class="module">
+                <h2>⭐ Regular Polygons Explorer</h2>
+                
+                <div class="polygon-card">
+                    <h3>What makes a polygon "regular"?</h3>
+                    <p>A regular polygon has:</p>
+                    <ul>
+                        <li><strong>Equal sides:</strong> All sides have the same length</li>
+                        <li><strong>Equal angles:</strong> All interior angles are the same</li>
+                    </ul>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3>🎛️ Controls</h3>
+                        <div class="controls">
+                            <label for="explorer-sides">Number of sides: <span id="explorer-sides-value">6</span></label>
+                            <input type="range" id="explorer-sides" min="3" max="20" value="6" class="slider">
+                            
+                            <label for="explorer-length">Side length: <span id="explorer-length-value">1.0</span></label>
+                            <input type="range" id="explorer-length" min="0.5" max="3" value="1" step="0.1" class="slider">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3>📊 Properties</h3>
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-label">Interior Angle</div>
+                                <div class="metric-value" id="explorer-interior">120.00°</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Exterior Angle</div>
+                                <div class="metric-value" id="explorer-exterior">60.00°</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Perimeter</div>
+                                <div class="metric-value" id="explorer-perimeter">6.00</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Area</div>
+                                <div class="metric-value" id="explorer-area">2.60</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Apothem</div>
+                                <div class="metric-value" id="explorer-apothem">0.87</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>🔍 Visualization</h3>
+                <div class="canvas-container-large">
+                    <canvas id="explorer-canvas" width="600" height="600"></canvas>
+                </div>
+
+                <h3>📝 Formulas for Regular Polygons</h3>
+                <div class="two-column">
+                    <div class="property-box">
+                        <h4>Angle Formulas:</h4>
+                        <p><strong>Interior Angle:</strong> (n-2) × 180° / n</p>
+                        <p><strong>Exterior Angle:</strong> 360° / n</p>
+                        <p><strong>Central Angle:</strong> 360° / n</p>
+                    </div>
+                    
+                    <div class="property-box">
+                        <h4>Measurement Formulas:</h4>
+                        <p><strong>Perimeter:</strong> n × side length</p>
+                        <p><strong>Apothem:</strong> s / (2 × tan(π/n))</p>
+                        <p><strong>Area:</strong> (1/2) × perimeter × apothem</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Module 3: Polygon Properties Calculator -->
+            <section id="calculator" class="module">
+                <h2>🧮 Polygon Properties Calculator</h2>
+                
+                <div class="polygon-card">
+                    <h3>Calculate properties of any regular polygon!</h3>
+                    <p>Enter the number of sides and one measurement to calculate all other properties.</p>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3>Input Parameters</h3>
+                        <div class="controls">
+                            <label for="calc-sides">Number of sides:</label>
+                            <input type="number" id="calc-sides" min="3" max="50" value="6" class="input-field">
+                            
+                            <label for="calc-input-type">What do you know?</label>
+                            <select id="calc-input-type" class="select-field">
+                                <option value="side">Side Length</option>
+                                <option value="perimeter">Perimeter</option>
+                                <option value="area">Area</option>
+                                <option value="apothem">Apothem</option>
+                            </select>
+                            
+                            <label for="calc-value">Value:</label>
+                            <input type="number" id="calc-value" min="0.1" value="1.0" step="0.1" class="input-field">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3>📊 Calculated Properties</h3>
+                        <div class="metrics-grid">
+                            <div class="metric">
+                                <div class="metric-label">Number of Sides</div>
+                                <div class="metric-value" id="calc-num-sides">6</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Side Length</div>
+                                <div class="metric-value" id="calc-side-length">1.000</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Perimeter</div>
+                                <div class="metric-value" id="calc-perimeter">6.000</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Area</div>
+                                <div class="metric-value" id="calc-area">2.598</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Apothem</div>
+                                <div class="metric-value" id="calc-apothem">0.866</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Interior Angle</div>
+                                <div class="metric-value" id="calc-interior">120.00°</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Exterior Angle</div>
+                                <div class="metric-value" id="calc-exterior">60.00°</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Central Angle</div>
+                                <div class="metric-value" id="calc-central">60.00°</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>📐 Polygon Visualization</h3>
+                <div class="canvas-container-large">
+                    <canvas id="calculator-canvas" width="600" height="600"></canvas>
+                </div>
+            </section>
+
+            <!-- Module 4: Quiz & Activities -->
+            <section id="quiz" class="module">
+                <h2>🎯 Quiz & Activities</h2>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="quick-quiz">Quick Quiz</button>
+                    <button class="tab-btn" data-tab="angle-hunt">Angle Hunt</button>
+                    <button class="tab-btn" data-tab="property-match">Property Match</button>
+                </div>
+
+                <!-- Quick Quiz Tab -->
+                <div id="quick-quiz" class="tab-content active">
+                    <h3>🧠 Quick Quiz</h3>
+                    <div id="quiz-container">
+                        <div class="quiz-question" id="quiz-question">
+                            <p class="question-text"></p>
+                            <div class="quiz-options"></div>
+                            <button class="btn" id="submit-answer">Submit Answer</button>
+                            <div class="quiz-feedback" id="quiz-feedback"></div>
+                        </div>
+                        <div class="quiz-complete" id="quiz-complete" style="display: none;">
+                            <h3>🎉 Quiz Complete!</h3>
+                            <p class="score-text"></p>
+                            <button class="btn" id="restart-quiz">Restart Quiz</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Angle Hunt Tab -->
+                <div id="angle-hunt" class="tab-content">
+                    <h3>🔍 Angle Hunt</h3>
+                    <p>Find the missing angles in these polygons!</p>
+                    
+                    <div class="controls">
+                        <label for="hunt-polygon">Choose polygon:</label>
+                        <select id="hunt-polygon" class="select-field">
+                            <option value="3">Triangle</option>
+                            <option value="4">Square</option>
+                            <option value="5">Pentagon</option>
+                            <option value="6" selected>Hexagon</option>
+                            <option value="8">Octagon</option>
+                        </select>
+                    </div>
+
+                    <div class="two-column">
+                        <div class="canvas-container">
+                            <canvas id="hunt-canvas" width="400" height="400"></canvas>
+                        </div>
+                        
+                        <div>
+                            <div class="property-box">
+                                <p><strong>Given information:</strong></p>
+                                <p id="hunt-info">This is a regular 6-sided polygon</p>
+                                <p>• All sides are equal</p>
+                                <p>• All angles are equal</p>
+                            </div>
+                            
+                            <div class="controls">
+                                <label for="user-interior">What is each interior angle?</label>
+                                <input type="number" id="user-interior" class="input-field" step="0.1">
+                                
+                                <label for="user-exterior">What is each exterior angle?</label>
+                                <input type="number" id="user-exterior" class="input-field" step="0.1">
+                                
+                                <button class="btn" id="check-angles">Check Answers</button>
+                            </div>
+                            
+                            <div class="quiz-feedback" id="hunt-feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Match Tab -->
+                <div id="property-match" class="tab-content">
+                    <h3>🎲 Property Match</h3>
+                    <p>Match the polygon with its properties!</p>
+                    
+                    <div class="controls">
+                        <label for="match-polygon">Choose a polygon:</label>
+                        <select id="match-polygon" class="select-field">
+                            <option value="3">Triangle</option>
+                            <option value="4">Square</option>
+                            <option value="5">Pentagon</option>
+                            <option value="6" selected>Hexagon</option>
+                            <option value="8">Octagon</option>
+                        </select>
+                    </div>
+
+                    <div class="two-column">
+                        <div class="canvas-container">
+                            <canvas id="match-canvas" width="400" height="400"></canvas>
+                        </div>
+                        
+                        <div class="property-box" id="match-properties">
+                            <h4>Properties of a regular Hexagon:</h4>
+                            <p>🔹 Number of sides: <span class="match-sides">6</span></p>
+                            <p>🔹 Each interior angle: <span class="match-interior">120</span>°</p>
+                            <p>🔹 Sum of interior angles: <span class="match-sum">720</span>°</p>
+                            <p>🔹 Each exterior angle: <span class="match-exterior">60</span>°</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Module 5: Polygon Art Creator -->
+            <section id="art" class="module">
+                <h2>🎨 Polygon Art Creator</h2>
+                
+                <div class="polygon-card">
+                    <h3>Create Beautiful Polygon Art!</h3>
+                    <p>Combine multiple polygons to create interesting patterns and designs.</p>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3>🎛️ Art Controls</h3>
+                        <div class="controls">
+                            <label for="num-polygons">Number of polygons: <span id="num-polygons-value">3</span></label>
+                            <input type="range" id="num-polygons" min="1" max="5" value="3" class="slider">
+                        </div>
+                        
+                        <div id="polygon-controls">
+                            <!-- Dynamically generated controls -->
+                        </div>
+                        
+                        <button class="btn" id="random-art">🎲 Random Art</button>
+                    </div>
+                    
+                    <div>
+                        <h3>🖼️ Your Polygon Art</h3>
+                        <div class="canvas-container-large">
+                            <canvas id="art-canvas" width="500" height="500"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
